@@ -39,3 +39,24 @@ print("Is John the grandparent of Joe?")
 print(Grandparent("John", "Joe"))  # Expected: True
 ```
 
+```python
+from sympy import symbols, Function, And, Implies
+
+# Define the symbols
+John, Mary, Joe = symbols('John Mary Joe')
+
+# Define the predicates
+Parent = Function('Parent')
+Grandparent = Function('Grandparent')
+
+# Define the statements
+statement1 = Parent(John, Mary)  # John is Mary's parent
+statement2 = Parent(Mary, Joe)   # Mary is Joe's parent
+
+# Define the rule for grandparent
+grandparent_rule = Implies(And(Parent(John, Mary), Parent(Mary, Joe)), Grandparent(John, Joe))
+
+# Print the conclusion
+print("John is the grandparent of Joe.")
+```
+
